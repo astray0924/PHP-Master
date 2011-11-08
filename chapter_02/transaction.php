@@ -1,6 +1,6 @@
 <?php
 	require 'db_conn.php';
-	
+	 
 	try {
 		// start the transaction
 		$db_conn->beginTransaction();

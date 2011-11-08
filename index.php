@@ -32,4 +32,19 @@ $starters = $stmt -> fetchAll();
 $category = 'Pudding';
 $stmt -> execute();
 $pudding = $stmt -> fetchAll();
+
+// Getting last inserted ID
+$sql = 'INSERT INTO recipes (name, description, chef, created)
+		VALUES (:name, :description, :chef, NOW())';
+		
+$stmt = $db_conn->prepare($sql);
+
+// perform query
+$stmt->execute(array(
+	':name' => 'Weekday Risotto',
+	':description' => 'Creamy rice-based dish, boosted by in-season ingredients. Otherwise known as \'raid-the-fridge risotto\'',
+	':chef' => 'Lorna')
+	);
+	
+echo "New recipe ID: " . $db_conn->lastInsertId();
 ?>
